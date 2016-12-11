@@ -24,8 +24,10 @@ db.once('open', function() {
 mongoose.connect('mongodb://localhost:27017/Gitfolio');
 
 var UserProfile = require('./models/UserProfile');
+var Repository = require('./models/Repository');
 
 // [CONFIGURE ROUTER]
-var router = require('./routes')(app, UserProfile);
+var repositoryRouter = require('./routes/repository')(app, Repository);
+var userRouter = require('./routes/user')(app, UserProfile);
 
 });
