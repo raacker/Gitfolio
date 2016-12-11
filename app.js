@@ -34,10 +34,13 @@ var server = app.listen(port, function(){
   var UserProfile = require('./models/UserProfile');
   var Repository = require('./models/Repository');
   var SkillSet = require('./models/SkillSet');
+  var Organization = require('./models/Organization');
+  var ActivityCard = require('./models/ActivityCard');
 
   // [CONFIGURE ROUTER]
   var repositoryRouter = require('./routes/repository')(app, Repository);
   var userRouter = require('./routes/user')(app, UserProfile);
   var skillSetRouter = require('./routes/skillset')(app, SkillSet);
-
+  var organizationRouter = require('./routes/organization')(app, Organization);
+  var activityCardRouter = require('./routes/activityCard')(app, ActivityCard);
 });
