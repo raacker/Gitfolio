@@ -5,16 +5,21 @@ var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
 var http        = require('http');
 var url         = require('url');
-var routes       = require('./routes');
+var routes      = require('./routes');
+var db          = mongoose.connection;
 
 // [CONFIGURE APP TO USE bodyParser]
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//app.get('/', routes.index);
-//app.get('/search', routes.search);
-//app.get('/users', routes.user);
-//app.get('/skillset', routes.skillset)
+app.get('/', routes.index);
+app.get('/search', routes.search);
+app.get('/preference', routes.preference);
+
+app.get('/sign_up', routes.sign_up);
+app.post('/sign_up', function(req, res, next) {
+  
+}, routes.sign_up_post);
 
 // [CONFIGURE SERVER PORT]
 var port = process.env.PORT || 8081;
@@ -23,7 +28,6 @@ var port = process.env.PORT || 8081;
 var server = app.listen(port, function(){
   console.log("Express server has started on port " + port)
 
-  var db = mongoose.connection;
   db.on('error', console.error);
   db.once('open', function() {
     console.log("Connected to MongoDB Server");

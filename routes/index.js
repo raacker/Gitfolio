@@ -8,7 +8,6 @@ exports.index = function(req, res) {
   res.status(200);
   res.render('index', {
     title: 'Haven Kim',
-    page: 0,
     url: url,
     login: req.session.login,
     username: req.session.username
@@ -25,5 +24,9 @@ exports.search = function(req, res) {
 exports.login_post = function(req, res) {
   res.status(200);
 
+};
+
+exports.preference = function(req, res) {
+  res.status(200);
 
 };
