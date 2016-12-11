@@ -1,4 +1,4 @@
-// routes/repository/index.js
+// routes/repository.js
 
 module.exports = function(app, Repository)
 {

@@ -1,4 +1,4 @@
-// routes/skillset/index.js
+// routes/skillset.js
 
 module.exports = function(app, SkillSet)
 {
