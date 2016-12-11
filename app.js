@@ -25,9 +25,10 @@ mongoose.connect('mongodb://localhost:27017/Gitfolio');
 
 var UserProfile = require('./models/UserProfile');
 var Repository = require('./models/Repository');
+var SkillSet = require('./models/SkillSet');
 
 // [CONFIGURE ROUTER]
 var repositoryRouter = require('./routes/repository')(app, Repository);
 var userRouter = require('./routes/user')(app, UserProfile);
-
+var skillSetRouter = require('./routes/skillset')(app, SkillSet);
 });
