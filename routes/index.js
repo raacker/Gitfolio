@@ -10,8 +10,6 @@ router.get("/", function(req, res) {
   res.render("welcome");
 });
 
-module.exports = router;
-
 //
 // exports.index = function(req, res) {
 //   res.status(200);
@@ -36,3 +34,5 @@ module.exports = router;
 //   res.status(200);
 //
 // };
+
+module.exports = router;
