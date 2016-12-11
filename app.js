@@ -10,6 +10,7 @@ var engine      = require('ejs');
 var fs          = require('fs');
 
 // [CONFIGURE APP TO USE bodyParser]
+app.set("views", __dirname + '/views');
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
