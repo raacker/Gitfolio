@@ -10,6 +10,14 @@ router.get("/", function(req, res) {
   res.render("welcome");
 });
 
+router.get("/preference", function(req, res) {
+  res.render("preference");
+});
+
+router.get("/search", function(req, res) {
+  res.render("search");
+});
+
 //
 // exports.index = function(req, res) {
 //   res.status(200);

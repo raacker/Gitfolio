@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/", require("./routes/index"));
+app.use("/preference", require("./routes/index"));
+app.use("/search", require("./routes/index"));
 
 // app.get('/search', routes.search);
 // app.get('/preference', routes.preference);
