@@ -16,10 +16,10 @@ app.get('/', routes.index);
 app.get('/search', routes.search);
 app.get('/preference', routes.preference);
 
-app.get('/sign_up', routes.sign_up);
-app.post('/sign_up', function(req, res, next) {
-  
-}, routes.sign_up_post);
+// app.get('/sign_up', routes.sign_up);
+// app.post('/sign_up', function(req, res, next) {
+//
+// }, routes.sign_up_post);
 
 // [CONFIGURE SERVER PORT]
 var port = process.env.PORT || 8081;
@@ -33,7 +33,8 @@ var server = app.listen(port, function(){
     console.log("Connected to MongoDB Server");
   });
 
-  mongoose.connect('mongodb://localhost:27017/Gitfolio');
+
+  mongoose.connect('mongodb://52.79.174.172:27017/Gitfolio');
 
   var UserProfile = require('./models/UserProfile');
   var Repository = require('./models/Repository');
