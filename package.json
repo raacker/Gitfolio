@@ -1,0 +1,27 @@
+{
+  "name": "gitfolio",
+  "version": "1.0.0",
+  "description": "Portfolio page for Github",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raacker/Gitfolio.git"
+  },
+  "keywords": [
+    "portfoilo"
+  ],
+  "author": "Haven Kim, Seongjung Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raacker/Gitfolio/issues"
+  },
+  "homepage": "https://github.com/raacker/Gitfolio#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.2"
+  }
+}
