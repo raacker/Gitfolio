@@ -4,17 +4,20 @@ var app         = express();
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
 var http        = require('http');
-var url         = require('url');
 var routes      = require('./routes');
 var db          = mongoose.connection;
+var engine      = require('ejs');
+var fs          = require('fs');
 
 // [CONFIGURE APP TO USE bodyParser]
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/', routes.index);
-app.get('/search', routes.search);
-app.get('/preference', routes.preference);
+app.use("/", require("./routes/index"));
+
+// app.get('/search', routes.search);
+// app.get('/preference', routes.preference);
 
 // app.get('/sign_up', routes.sign_up);
 // app.post('/sign_up', function(req, res, next) {
@@ -32,7 +35,6 @@ var server = app.listen(port, function(){
   db.once('open', function() {
     console.log("Connected to MongoDB Server");
   });
-
 
   mongoose.connect('mongodb://52.79.174.172:27017/Gitfolio');
 
