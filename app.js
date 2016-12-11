@@ -18,14 +18,7 @@ app.use(bodyParser.json());
 app.use("/", require("./routes/index"));
 app.use("/preference", require("./routes/index"));
 app.use("/search", require("./routes/index"));
-
-// app.get('/search', routes.search);
-// app.get('/preference', routes.preference);
-
-// app.get('/sign_up', routes.sign_up);
-// app.post('/sign_up', function(req, res, next) {
-//
-// }, routes.sign_up_post);
+app.use("/login", require("./routes/index"));
 
 // [CONFIGURE SERVER PORT]
 var port = process.env.PORT || 8081;
@@ -54,3 +47,12 @@ var server = app.listen(port, function(){
   var organizationRouter = require('./routes/organization')(app, Organization);
   var activityCardRouter = require('./routes/activityCard')(app, ActivityCard);
 });
+
+var createSession = function createSession() {
+  return function(req, res, next) {
+    if(!req.session.login) {
+      req.session.login = 'logout';
+    }
+    next();
+  };
+};

@@ -18,6 +18,14 @@ router.get("/search", function(req, res) {
   res.render("search");
 });
 
+router.get("/login", function(req, res) {
+  res.render("login");
+})
+
+router.post("/", function(req, res) {
+  res.render();
+});
+
 //
 // exports.index = function(req, res) {
 //   res.status(200);
