@@ -9,6 +9,9 @@ var db        = mongoose.connection;
 var github    = require('octonode');
 var client;
 
+var client_id     = "a9673603ce17a0b961f0";
+var client_secret = "7d5cabad241b54e7d75ade79249f5f3c1396cedb";
+
 router.get("/", function(req, res) {
   res.status(200);
   if(req.session.login == 'login') {
@@ -27,14 +30,16 @@ router.get("/main", function(req, res) {
 });
 
 router.get("/login", function(req, res) {
-  res.render("login");
+  res.render("login", {
+    client_id: client_id
+  });
 })
 
 router.get("/callback", function (req, res) {
-  var session_code = request.env['rack.request.query_hash']['code']
+  var session_code = req.body.code;
 
   var args = {
-    data: {client_id: CLIENT_ID, client_secret: CLIENT_SECRET,
+    data: {client_id: client_id, client_secret: client_secret,
           code: session_code, accept: json},
    headers: {"Content-Type": "application/json"}
   };

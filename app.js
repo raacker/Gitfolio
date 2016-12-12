@@ -11,6 +11,8 @@ var fs           = require('fs');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 
+var client_id     = "a9673603ce17a0b961f0";
+var client_secret = "7d5cabad241b54e7d75ade79249f5f3c1396cedb";
 
 // [CONFIGURE SERVER PORT]
 var port = process.env.PORT || 8081;
