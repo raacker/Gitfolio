@@ -27,7 +27,17 @@ router.get("/preference", function(req, res) {
 });
 
 router.get("/main", function(req, res) {
-  res.render("main");
+    res.status(200);
+    var activityCard = require('../models/ActivityCard');
+    activityCard.count({}, function(err, count) {
+      activityCard.find({}, function(err, result) {
+        res.render("main", {
+          documentCount: count,
+          activityCards: result
+      });
+    });
+
+  });
 });
 
 router.get("/login", function(req, res) {
