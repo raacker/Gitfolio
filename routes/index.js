@@ -8,12 +8,10 @@ var db        = mongoose.connection;
 
 router.get("/", function(req, res) {
   res.status(200);
-  if(req.session.login != 'login') {
-    res.redirect("/search");
+  if(req.session.login == 'login') {
+    res.redirect("/main");
   } else {
-    res.render("welcome", {
-      login: req.session.login
-    });
+    res.render("search");
   }
 });
 
@@ -21,8 +19,8 @@ router.get("/preference", function(req, res) {
   res.render("preference");
 });
 
-router.get("/search", function(req, res) {
-  res.render("search");
+router.get("/main", function(req, res) {
+  res.render("main");
 });
 
 router.get("/login", function(req, res) {

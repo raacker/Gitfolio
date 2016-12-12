@@ -45,7 +45,7 @@ app.use(createSession());
 
 app.use("/", require("./routes/index"));
 app.use("/preference", require("./routes/index"));
-app.use("/search", require("./routes/index"));
+app.use("/main", require("./routes/index"));
 app.use("/login", require("./routes/index"));
 
 // [RUN SERVER]
