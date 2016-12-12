@@ -3,11 +3,18 @@ var mongoose  = require('mongoose');
 var url       = require('url');
 var express   = require("express");
 var router    = express.Router();
-
+var session   = require('express-session');
 var db        = mongoose.connection;
 
 router.get("/", function(req, res) {
-  res.render("welcome");
+  res.status(200);
+  if(req.session.login != 'login') {
+    res.redirect("/search");
+  } else {
+    res.render("welcome", {
+      login: req.session.login
+    });
+  }
 });
 
 router.get("/preference", function(req, res) {
