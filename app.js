@@ -62,8 +62,8 @@ var server = app.listen(port, function(){
     console.log("Connected to MongoDB Server");
   });
 
-  mongoose.connect('mongodb://52.79.174.172:27017/Gitfolio');
-
+  //mongoose.connect('mongodb://52.79.174.172:27017/Gitfolio');
+  mongoose.connect('mongodb://localhost:27017/Gitfolio');
   var UserProfile = require('./models/UserProfile');
   var Repository = require('./models/Repository');
   var SkillSet = require('./models/SkillSet');
