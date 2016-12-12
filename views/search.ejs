@@ -20,7 +20,7 @@
   <link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
   <!-- Theme CSS -->
-  <link href="/css/search.min.css" rel="stylesheet">
+  <link href="/css/search.css" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,10 +29,24 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
+
 <body>
-  <div>
-    <h1>Gitfolio</h1>
-    <p>Search you </p>
-  </div>
+  <header>
+    <div class="header-content">
+      <div class="header-content-inner">
+        <h1 id="homeHeading">Gitfolio</h1>
+        <hr>
+        <p>Search what you want!</p>
+        <form class="form-inline">
+          <input id="search-input" type="email" class="form-control" size="60" placeholder="Search Username" required>
+          <a href="" type="button" class="btn btn-default btn-xl sr-button">Search</a>
+        </form>
+        <div class="sign-button-group">
+          <a href="" id="sign-up-btn" class="btn btn-default btn-xl sr-button">Sign Up</a>
+          <a href="" id="sign-in-btn" class="btn btn-default btn-xl sr-button">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </header>
 </body>
 </html>

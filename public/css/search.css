@@ -1,0 +1,148 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.8;
+}
+hr {
+    border-color: #ffffff;
+    border-width: 3px;
+}
+hr.light {
+    border-color: white;
+}
+header {
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-color: #88B04B;
+    text-align: center;
+    color: white;
+}
+header .header-content {
+    position: relative;
+    text-align: center;
+    padding: 100px 15px 100px;
+    width: 100%;
+}
+header .header-content .header-content-inner h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 30px;
+}
+header .header-content .header-content-inner hr {
+    margin: 30px auto;
+}
+header .header-content .header-content-inner p {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+    header {
+        min-height: 100%;
+    }
+    header .header-content {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        padding: 0 50px;
+    }
+    header .header-content .header-content-inner {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    header .header-content .header-content-inner h1 {
+        font-size: 50px;
+    }
+    header .header-content .header-content-inner p {
+        font-size: 18px;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.btn {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    border: none;
+    border-radius: 300px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.btn-xl {
+    padding: 15px 30px;
+}
+.btn-default {
+    color: #222222;
+    background-color: white;
+    border-color: white;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    color: #222222;
+    background-color: #f2f2f2;
+    border-color: #ededed;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    background-image: none;
+}
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+    background-color: white;
+    border-color: white;
+}
+.btn-default .badge {
+    color: white;
+    background-color: #222222;
+}
+#search-input {
+    height : 50px;
+    border: none;
+    border-radius: 300px;
+}
+.sign-button-group {
+    padding: 30px;
+}
+#sign-in-btn {
+
+}
+#sign-up-btn {
+    
+}
