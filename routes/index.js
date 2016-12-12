@@ -7,8 +7,7 @@ var session   = require('express-session');
 var Client    = require('node-rest-client').Client;
 var db        = mongoose.connection;
 var github    = require('octonode');
-
-var client    = new Client();
+var client;
 
 router.get("/", function(req, res) {
   res.status(200);
@@ -46,7 +45,12 @@ router.get("/callback", function (req, res) {
                              console.log(response);
                            });
 
-  var access_token = JSON.parse(result)['access_token']
+  var access_token = JSON.parse(result)['access_token'];
+  client = github.client(access_token);
+
+  client.get('/user', {}, function(err, status, body, headers) {
+    console.log(body);
+  });
 });
 
 router.post("/", function(req, res) {
