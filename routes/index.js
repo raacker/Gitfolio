@@ -7,7 +7,8 @@ var session   = require('express-session');
 var Client    = require('node-rest-client').Client;
 var db        = mongoose.connection;
 var github    = require('octonode');
-var client;
+var client    = new Client();
+var gitCli;
 
 var client_id     = "a9673603ce17a0b961f0";
 var client_secret = "7d5cabad241b54e7d75ade79249f5f3c1396cedb";
@@ -36,11 +37,11 @@ router.get("/login", function(req, res) {
 })
 
 router.get("/callback", function (req, res) {
-  var session_code = req.body.code;
+  var session_code = url.parse(req.url).query.split('=')[1];
 
   var args = {
     data: {client_id: client_id, client_secret: client_secret,
-          code: session_code, accept: json},
+          code: session_code},
    headers: {"Content-Type": "application/json"}
   };
 
@@ -50,8 +51,8 @@ router.get("/callback", function (req, res) {
                              console.log(response);
                            });
 
-  var access_token = JSON.parse(result)['access_token'];
-  client = github.client(access_token);
+  var access_token = result.access_token;
+  gitCli = github.client(access_token);
 
   client.get('/user', {}, function(err, status, body, headers) {
     console.log(body);
