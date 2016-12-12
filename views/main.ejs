@@ -90,6 +90,18 @@
         <h2>Caption 1</h2>
       </div>
     </div>
+    <% for(var i = 1; i < repositories.length; i++){ %>
+      <div class="item">
+        <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+        <div class="carousel-caption">
+          <div class="skill-name">
+          </div>
+          <div class="description">
+            <%= repositories[i].description %>
+          </div>
+        </div>
+      </div>
+      <% } %>
     <div class="item">
       <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
       <div class="carousel-caption">
@@ -137,6 +149,20 @@
   </div>
   <div class="container">
     <div class="row">
+      <% for(var i = 0; i < skillSets.length; i++){ %>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+            <h3><%= skillSets[i].skillName %></h3>
+            <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+            <div class="skill-name">
+            </div>
+            <div class="skill-level">
+              <%= skillSets[i].level %>
+            </div>
+          </div>
+        </div>
+        <% } %>
       <div class="col-lg-3 col-md-6 text-center">
         <div class="service-box">
           <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
@@ -180,7 +206,7 @@
   </div>
   <div class="container-fluid">
     <div class="row no-gutter popup-gallery">
-      <% for(var i = 0; i < documentCount; i++){ %>
+      <% for(var i = 0; i < activityCards.length; i++){ %>
         <div class="col-lg-4 col-sm-6">
           <a href="/img/portfolio/fullsize/1.jpg" class="portfolio-box">
             <img src="/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
@@ -291,6 +317,8 @@
         </a>
       </div>
     </div>
+    </div>
+    <a data-toggle="modal" href="#cardAdd" class="btn btn-primary btn-small" style="height:32px">add</a>
   </div>
 </section>
 
@@ -312,6 +340,42 @@
         interval: 5000 //changes the speed
     })
 </script>
+
+<!-- ActivityCardAdd Modal -->
+<div class="modal fade" id="cardAdd">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">ActivityCard Add</h4>
+      </div>
+
+      <form action="api/activityCards" method="post">
+        <div class="modal-body">
+          <fieldset>
+            <div class="form-group">
+              <label>ActivityCard Description</label>
+              <input type="text" class="form-control" name="description" id="description" placeholder="Descripton" maxlength="25">
+            </div>
+            <div class="form-group">
+              <label>ActivityCard Description</label>
+              <input type="text" class="form-control" name="cardType" id="cardType" placeholder="CardType" maxlength="25">
+            </div>
+            <div class="form-group">
+              <label>ActivityCard Description</label>
+              <input type="text" class="form-control" name="complexityLevel" id="complexityLevel" placeholder="ComplexityLevel" maxlength="25">
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" value="SUBMIT">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
 </body>
 
 </html>

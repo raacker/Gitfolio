@@ -31,6 +31,8 @@ module.exports = function(app, Repository)
   app.post('/api/repositories', function(req, res) {
     var repository = new Repository();
     repository.userID = req.body.userID;
+    repository.repoName = req.body.repoName;
+    repository.repoURL = req.body.repoURL;
     repository.description = req.body.description;
 
     repository.save(function(err) {

@@ -42,7 +42,7 @@ module.exports = function(app, ActivityCard)
         console.error(err);
         res.json({result: 0});
       }
-      res.json({result: 1});
+      res.redirect('/main');
     });
   });
 
