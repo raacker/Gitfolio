@@ -8,7 +8,7 @@ module.exports = function(app, UserProfile)
       if(err) {
         return res.status(500).send({error: 'Database Failure'});
       }
-      res.json(users);
+      res.redirect("/main");
     });
   });
 
@@ -21,7 +21,7 @@ module.exports = function(app, UserProfile)
       if(!user) {
         return res.status(404).json({error: 'User Profile not found'});
       }
-      res.json(user);
+      res.render("main");
     })
   });
 
@@ -29,7 +29,6 @@ module.exports = function(app, UserProfile)
   app.post('/api/userProfiles', function(req, res){
     var userProfile = new UserProfile();
     userProfile.userID = req.body.userID;
-    userProfile.userAuthKey = req.body.userAuthKey;
     userProfile.linkedInLink = req.body.userLinkedInLink;
 
     userProfile.save(function(err) {
@@ -38,7 +37,9 @@ module.exports = function(app, UserProfile)
         res.json({result: 0});
         return;
       }
-      res.json({result: 1});
+      res.render("/main",{
+        userID: req.body.userID
+      });
     });
   });
 
@@ -52,9 +53,6 @@ module.exports = function(app, UserProfile)
         return res.status(404).json({ error: 'User Profile not found'});
       }
 
-      if(req.body.userAuthKey) {
-        user.userAuthKey = req.body.userAuthKey;
-      }
       if(req.body.userLinkedInLink) {
         user.userLinkedInLink = req.body.userLinkedInLink;
       }

@@ -68,14 +68,27 @@ module.exports = function(app, ActivityCard)
         return res.status(404).json({ error: 'ActivityCard not found'});
       }
 
-      if(req.body.actiityURL) {
+      if(req.body.activityURL) {
         activityCard.activityURL = req.body.activityURL;
-      }
-      if(req.body.activityName) {
-        activityCard.activityName = req.body.activityName;
-      }
-      if(req.body.repositoryName) {
-        activityCard.repositoryName = req.body.repositoryName;
+
+        var uri = url.parse(req.body.activityURL).pathname;
+        var urlParsed = uri.split('/');
+        activityCard.repositoryName = urlParsed[2];
+        activityCard.cardType = urlParsed[3];
+
+        if(activityCard.cardType == "pull") {
+          var ghpr = client.pr(urlParsed[1] + "/" + urlParsed[2], urlParsed[4]);
+          ghpr.info(function(err, data, headers) {
+            activityCard.activityName = data.title;
+            // activityCard.save(function(err) {
+            //   if (err) {
+            //     console.error(err);
+            //     res.json({result: 0});
+            //   }
+            //   res.redirect('/main');
+            // });
+          });
+        }
       }
       if(req.body.description) {
         activityCard.description = req.body.description;

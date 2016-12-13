@@ -42,11 +42,40 @@
           <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Search</button>
         </form>
         <div class="sign-button-group">
-          <a href="" id="sign-up-btn" class="btn btn-default btn-xl sr-button">Sign Up</a>
-          <a href="" id="sign-in-btn" class="btn btn-default btn-xl sr-button">Sign in</a>
+          <a id="sign-up-btn" class="btn btn-default btn-xl sr-button" onclick="getElementById('sign_up').hidden = false; getElementById('sign_in').hidden = true;") >Sign Up</a>
+          <a id="sign-in-btn" class="btn btn-default btn-xl sr-button" onclick="getElementById('sign_in').hidden = false; getElementById('sign_up').hidden = true;") >Sign In</a>
         </div>
+        <form id="sign_up" class="form-inline" action="api/userProfiles" method="post" hidden="true">
+          <input id="userID" type="string" class="form-control" size="60" placeholder="Your github ID" required>
+          <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Sign Up</button>
+        </form>
+        <form id="sign_in" class="form-inline" action="api/userProfiles" method="get" hidden="true">
+          <input id="userID" type="string" class="form-control" size="60" placeholder="Your github ID" required>
+          <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Sign In</button>
+        </form>
       </div>
     </div>
   </header>
+
+    <div class="modal fade" id="userAdd" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="api/userProfiles" method="post">
+            <div class="modal-body">
+              <fieldset>
+                <div class="form-group">
+                  <label>Enter your Github ID</label>
+                  <input type="text" class="form-control" name="userID" id="userID" placeholder="Your github Email" required>
+                </div>
+              </fieldset>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" value="SUBMIT">Sign Up</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

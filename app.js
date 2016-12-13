@@ -13,6 +13,9 @@ var session      = require('express-session');
 var github       = require('octonode');
 var client       = github.client();
 
+var userID       = 'haven';
+var userLinkedInLink = 'https://linkedIn.com';
+
 //var client_id     = "a9673603ce17a0b961f0";
 //var client_secret = "7d5cabad241b54e7d75ade79249f5f3c1396cedb";
 
