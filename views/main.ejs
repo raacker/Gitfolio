@@ -190,13 +190,16 @@
             <img src="/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
             <div class="portfolio-box-caption">
               <div class="portfolio-box-caption-content">
+                <div class="project-name">
+                  <%= activityCards[i].activityName %>
+                </div>
                 <div class="project-description">
                   <%= activityCards[i].description %>
                 </div>
                 <div class="project-category text-faded">
                   <%= activityCards[i].cardType %>
                 </div>
-                <div class="project-name">
+                <div class="project-importance">
                   <%= activityCards[i].importanceLevel %>
                 </div>
               </div>
@@ -235,27 +238,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-        <h4 class="modal-title">ActivityCard Add</h4>
+        <h4 class="modal-title">Add Your Activity</h4>
       </div>
 
       <form action="api/activityCards" method="post">
         <div class="modal-body">
           <fieldset>
             <div class="form-group">
-              <label>ActivityCard Description</label>
-              <input type="text" class="form-control" name="description" id="description" placeholder="Descripton" maxlength="25">
+              <label>Activity URL</label>
+              <input type="text" class="form-control" name="activityURL" id="activityURL" placeholder="Activity URL">
             </div>
             <div class="form-group">
-              <div class="col-sm-10">
-                <div class="select">
-                  <label>Activity Type</label>
-                  <select class="" name="cardType">
-                    <option value="type1">issue</option>
-                    <option value="type2">Pull Request</option>
-                    <option value="type3">Commit</option>
-                  </select>
-                </div>
-              </div>
+              <label>Activity Description</label>
+              <input type="text" class="form-control" name="description" id="description" placeholder="Descripton" maxlength="25">
             </div>
 
             <div class="form-group">
@@ -263,11 +258,11 @@
                 <div class="select">
                   <label>Complexity Level</label>
                   <select class="" name="complexityLevel">
-                    <option value="type1">1</option>
-                    <option value="type2">2</option>
-                    <option value="type3">3</option>
-                    <option value="type4">4</option>
-                    <option value="type5">5</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                   </select>
                 </div>
               </div>
@@ -278,16 +273,17 @@
                 <div class="select">
                   <label>Importance Level</label>
                   <select class="" name="importanceLevel">
-                    <option value="type1">1</option>
-                    <option value="type2">2</option>
-                    <option value="type3">3</option>
-                    <option value="type4">4</option>
-                    <option value="type5">5</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                   </select>
                 </div>
               </div>
             </div>
           </fieldset>
+          <div name="userID" value="haven"/>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" value="SUBMIT">Add</button>

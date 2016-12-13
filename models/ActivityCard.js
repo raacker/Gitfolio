@@ -3,7 +3,9 @@ var Schema = mongoose.Schema;
 
 var activityCardSchema = new Schema({
   userID: String,
-  iconURL: String,
+  activityURL: String,
+  activityName: String,
+  repositoryName: String,
   description: String,
   cardType: String,
   complexityLevel: Number,
