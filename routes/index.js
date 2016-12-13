@@ -23,7 +23,9 @@ router.get("/", function(req, res) {
 });
 
 router.get("/preference", function(req, res) {
-  res.render("preference");
+  res.render("preference", {
+    userID: req.userID
+  });
 });
 
 router.get("/main", function(req, res) {
@@ -32,7 +34,9 @@ router.get("/main", function(req, res) {
     var organization = require('../models/Organization');
     var skillSet = require('../models/SkillSet');
     var activityCard = require('../models/ActivityCard');
+    var repositoryRouter = require('repository')(req, Repository);
 
+    
     repository.count({}, function(err, repositoryCount) {
       repository.find({}, function(err, repositoryResult) {
         organization.count({}, function(err, organizationCount) {
@@ -45,7 +49,9 @@ router.get("/main", function(req, res) {
                       repositories: repositoryResult,
                       organizations: organizationResult,
                       skillSets: skillSetResult,
-                      activityCards: activityCardResult
+                      activityCards: activityCardResult,
+                      userID: req.userID,
+                      userLinkedInLink: req.userLinkedInLink
                     });
                   });
                 })

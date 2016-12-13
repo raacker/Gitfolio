@@ -1,4 +1,7 @@
 // routes/activityCard.js
+var github    = require('octonode');
+var client    = github.client();
+var url       = require('url');
 
 module.exports = function(app, ActivityCard)
 {
@@ -31,19 +34,29 @@ module.exports = function(app, ActivityCard)
   app.post('/api/activityCards', function(req, res) {
     var activityCard = new ActivityCard();
     activityCard.userID = req.body.userID;
-    activityCard.iconURL = req.body.iconURL;
+    activityCard.activityURL = req.body.activityURL;
     activityCard.description = req.body.description;
-    activityCard.cardType = req.body.cardType;
     activityCard.complexityLevel = req.body.complexityLevel;
     activityCard.importanceLevel = req.body.importanceLevel;
 
-    activityCard.save(function(err) {
-      if (err) {
-        console.error(err);
-        res.json({result: 0});
-      }
-      res.redirect('/main');
-    });
+    var uri = url.parse(req.body.activityURL).pathname;
+    var urlParsed = uri.split('/');
+    activityCard.repositoryName = urlParsed[2];
+    activityCard.cardType = urlParsed[3];
+
+    if(activityCard.cardType == "pull") {
+      var ghpr = client.pr(urlParsed[1] + "/" + urlParsed[2], urlParsed[4]);
+      ghpr.info(function(err, data, headers) {
+        activityCard.activityName = data.title;
+        activityCard.save(function(err) {
+          if (err) {
+            console.error(err);
+            res.json({result: 0});
+          }
+          res.redirect('/main');
+        });
+      });
+    }
   });
 
   app.put('/api/activityCards/:activityCard_id', function(req, res) {
@@ -55,14 +68,30 @@ module.exports = function(app, ActivityCard)
         return res.status(404).json({ error: 'ActivityCard not found'});
       }
 
+      if(req.body.activityURL) {
+        activityCard.activityURL = req.body.activityURL;
+
+        var uri = url.parse(req.body.activityURL).pathname;
+        var urlParsed = uri.split('/');
+        activityCard.repositoryName = urlParsed[2];
+        activityCard.cardType = urlParsed[3];
+
+        if(activityCard.cardType == "pull") {
+          var ghpr = client.pr(urlParsed[1] + "/" + urlParsed[2], urlParsed[4]);
+          ghpr.info(function(err, data, headers) {
+            activityCard.activityName = data.title;
+            // activityCard.save(function(err) {
+            //   if (err) {
+            //     console.error(err);
+            //     res.json({result: 0});
+            //   }
+            //   res.redirect('/main');
+            // });
+          });
+        }
+      }
       if(req.body.description) {
         activityCard.description = req.body.description;
-      }
-      if(req.body.iconURL) {
-        activityCard.iconURL = req.body.iconURL;
-      }
-      if(req.body.cardType) {
-        activityCard.cardType = req.body.cardType;
       }
       if(req.body.complexityLevel) {
         activityCard.complexityLevel = req.body.complexityLevel;
@@ -75,7 +104,7 @@ module.exports = function(app, ActivityCard)
         if(err) {
           return res.status(500).json({error: 'Failed to update'});
         }
-        res.json({message: 'ActivityCard Updated'});
+        res.redirect('/main');
       });
     });
   });

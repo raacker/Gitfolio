@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 
 var userProfileSchema = new Schema({
   userID: String,
-  userAuthKey: String,
   userLinkedInLink: String
 });
 

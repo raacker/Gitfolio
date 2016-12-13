@@ -31,16 +31,19 @@ module.exports = function(app, Repository)
   app.post('/api/repositories', function(req, res) {
     var repository = new Repository();
     repository.userID = req.body.userID;
-    repository.repoName = req.body.repoName;
     repository.repoURL = req.body.repoURL;
     repository.description = req.body.description;
+
+    var uri = url.parse(req.body.repoURL).pathname;
+    var urlParsed = uri.split('/');
+    repository.repositoryName = urlParsed[2];
 
     repository.save(function(err) {
       if (err) {
         console.error(err);
         res.json({result: 0});
       }
-      res.json({result: 1});
+      res.redirect('/main');
     });
   });
 
@@ -53,6 +56,11 @@ module.exports = function(app, Repository)
         return res.status(404).json({ error: 'Repository not found'});
       }
 
+      if(req.body.repoURL) {
+        var uri = url.parse(req.body.repoURL).pathname;
+        var urlParsed = uri.split('/');
+        repository.repositoryName = urlParsed[2];
+      }
       if(req.body.description) {
         repository.description = req.body.description;
       }
