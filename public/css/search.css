@@ -8,7 +8,7 @@ body {
     line-height: 1.8;
 }
 hr {
-    border-color: #ffffff;
+    border-color: #88B04B;
     border-width: 3px;
 }
 hr.light {
@@ -21,7 +21,7 @@ header {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    background-color: #88B04B;
+    background-color: #ffffff;
     text-align: center;
     color: white;
 }
@@ -76,7 +76,7 @@ header .header-content .header-content-inner p {
 }
 .btn {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-    border: none;
+    border: medium;
     border-radius: 300px;
     font-weight: 700;
     text-transform: uppercase;
@@ -85,9 +85,9 @@ header .header-content .header-content-inner p {
     padding: 15px 30px;
 }
 .btn-default {
-    color: #222222;
-    background-color: white;
-    border-color: white;
+    color: white;
+    background-color: #88B04B;
+    border-color: #88B04B;
     -webkit-transition: all 0.35s;
     -moz-transition: all 0.35s;
     transition: all 0.35s;
@@ -98,9 +98,9 @@ header .header-content .header-content-inner p {
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-    color: #222222;
-    background-color: #f2f2f2;
-    border-color: #ededed;
+    color: #88B04B;
+    background-color: white;
+    border-color: #88B04B;
 }
 .btn-default:active,
 .btn-default.active,
@@ -126,11 +126,11 @@ fieldset[disabled] .btn-default:active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
     background-color: white;
-    border-color: white;
+    border-color:#88B04B;
 }
 .btn-default .badge {
-    color: white;
-    background-color: #222222;
+    color: #88B04B;
+    background-color: #88B04B;
 }
 #search-input {
     height : 50px;
@@ -141,8 +141,13 @@ fieldset[disabled] .btn-default.active {
     padding: 30px;
 }
 #sign-in-btn {
-
+    margin-left: 30px;
 }
 #sign-up-btn {
-
+    margin-right: 30px;
+}
+#logo {
+    height: 15%;
+    width: 65%;
+    margin-bottom: 30px;
 }
