@@ -28,16 +28,33 @@ router.get("/preference", function(req, res) {
 
 router.get("/main", function(req, res) {
     res.status(200);
+    var repository = require('../models/Repository');
+    var organization = require('../models/Organization');
+    var skillSet = require('../models/SkillSet');
     var activityCard = require('../models/ActivityCard');
-    activityCard.count({}, function(err, count) {
-      activityCard.find({}, function(err, result) {
-        res.render("main", {
-          documentCount: count,
-          activityCards: result
+
+    repository.count({}, function(err, repositoryCount) {
+      repository.find({}, function(err, repositoryResult) {
+        organization.count({}, function(err, organizationCount) {
+          organization.find({}, function(err, organizationResult) {
+            skillSet.count({}, function(err, skillSetCount){
+              skillSet.find({}, function(err, skillSetResult) {
+                activityCard.count({}, function(err, activityCardCount) {
+                  activityCard.find({}, function(err, activityCardResult) {
+                    res.render("main" , {
+                      repositories: repositoryResult,
+                      organizations: organizationResult,
+                      skillSets: skillSetResult,
+                      activityCards: activityCardResult
+                    });
+                  });
+                })
+              });
+            });
+          });
+        });
       });
     });
-
-  });
 });
 
 router.get("/login", function(req, res) {
@@ -46,8 +63,9 @@ router.get("/login", function(req, res) {
   });
 });
 
-router.post("/", function(req, res) {
-  res.render();
-});
+//
+// router.post("/", function(req, res) {
+//   res.render();
+// });
 
 module.exports = router;

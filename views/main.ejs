@@ -84,12 +84,30 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active">
-      <div class="fill" style="background-image: image('/public/img/repositoryback1.png')"></div>
-      <div class="carousel-caption">
-        <h2>Caption 1</h2>
+    <% if(repositories.length > 0){ %>
+      <div class="item active">
+        <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+        <div class="carousel-caption">
+          <div class="skill-name">
+          </div>
+          <div class="description">
+            <%= repositories[0].description %>
+          </div>
+        </div>
       </div>
-    </div>
+      <% } %>
+    <% for(var i = 1; i < repositories.length; i++){ %>
+      <div class="item">
+        <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+        <div class="carousel-caption">
+          <div class="skill-name">
+          </div>
+          <div class="description">
+            <%= repositories[i].description %>
+          </div>
+        </div>
+      </div>
+      <% } %>
     <div class="item">
       <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
       <div class="carousel-caption">
@@ -137,34 +155,20 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box">
-          <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
-          <h3>java</h3>
-          <p class="text-muted">level : 5</p>
+      <% for(var i = 0; i < skillSets.length; i++){ %>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+            <h3><%= skillSets[i].skillName %></h3>
+            <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+            <div class="skill-name">
+            </div>
+            <div class="skill-level">
+              <%= skillSets[i].level %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box">
-          <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
-          <h3>Ready to Ship</h3>
-          <p class="text-muted">You can use this theme as is, or you can make changes!</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box">
-          <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
-          <h3>Up to Date</h3>
-          <p class="text-muted">We update dependencies to keep things fresh.</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box">
-          <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
-          <h3>Made with Love</h3>
-          <p class="text-muted">You have to make your websites with love these days!</p>
-        </div>
-      </div>
+        <% } %>
     </div>
   </div>
 </section>
@@ -180,7 +184,7 @@
   </div>
   <div class="container-fluid">
     <div class="row no-gutter popup-gallery">
-      <% for(var i = 0; i < documentCount; i++){ %>
+      <% for(var i = 0; i < activityCards.length; i++){ %>
         <div class="col-lg-4 col-sm-6">
           <a href="/img/portfolio/fullsize/1.jpg" class="portfolio-box">
             <img src="/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
@@ -200,97 +204,9 @@
           </a>
         </div>
   		<% } %>
-      <div class="col-lg-4 col-sm-6">
-        <a href="/img/portfolio/fullsize/1.jpg" class="portfolio-box">
-          <img src="/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                Category
-              </div>
-              <div class="project-name">
-                Project Name
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <a href="/img/portfolio/fullsize/2.jpg" class="portfolio-box">
-          <img src="/img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                Category
-              </div>
-              <div class="project-name">
-                Project Name
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <a href="/img/portfolio/fullsize/3.jpg" class="portfolio-box">
-          <img src="/img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                Category
-              </div>
-              <div class="project-name">
-                Project Name
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <a href="/img/portfolio/fullsize/4.jpg" class="portfolio-box">
-          <img src="/img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                Category
-              </div>
-              <div class="project-name">
-                Project Name
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <a href="/img/portfolio/fullsize/5.jpg" class="portfolio-box">
-          <img src="/img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                Category
-              </div>
-              <div class="project-name">
-                Project Name
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-sm-6">
-        <a href="/img/portfolio/fullsize/6.jpg" class="portfolio-box">
-          <img src="/img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                Category
-              </div>
-              <div class="project-name">
-                Project Name
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
     </div>
+    </div>
+    <a data-toggle="modal" href="#cardAdd" class="btn btn-primary btn-small" style="height:32px">add</a>
   </div>
 </section>
 
@@ -312,6 +228,76 @@
         interval: 5000 //changes the speed
     })
 </script>
+
+<!-- ActivityCardAdd Modal -->
+<div class="modal fade" id="cardAdd">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">ActivityCard Add</h4>
+      </div>
+
+      <form action="api/activityCards" method="post">
+        <div class="modal-body">
+          <fieldset>
+            <div class="form-group">
+              <label>ActivityCard Description</label>
+              <input type="text" class="form-control" name="description" id="description" placeholder="Descripton" maxlength="25">
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10">
+                <div class="select">
+                  <label>Activity Type</label>
+                  <select class="" name="cardType">
+                    <option value="type1">issue</option>
+                    <option value="type2">Pull Request</option>
+                    <option value="type3">Commit</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-10">
+                <div class="select">
+                  <label>Complexity Level</label>
+                  <select class="" name="complexityLevel">
+                    <option value="type1">1</option>
+                    <option value="type2">2</option>
+                    <option value="type3">3</option>
+                    <option value="type4">4</option>
+                    <option value="type5">5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-10">
+                <div class="select">
+                  <label>Importance Level</label>
+                  <select class="" name="importanceLevel">
+                    <option value="type1">1</option>
+                    <option value="type2">2</option>
+                    <option value="type3">3</option>
+                    <option value="type4">4</option>
+                    <option value="type5">5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" value="SUBMIT">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
 </body>
 
 </html>

@@ -3,6 +3,8 @@ var Schema = mongoose.Schema;
 
 var repositorySchema = new Schema({
   userID: String,
+  repoURL: String,
+  repoName: String,
   description: String
 });
 
