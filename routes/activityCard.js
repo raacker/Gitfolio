@@ -57,7 +57,7 @@ module.exports = function(app, ActivityCard)
           res.redirect("/main");
         });
       })
-    } else if(activityCard.cardType == "issue") {
+    } else if(activityCard.cardType == "issues") {
       var ghissue = client.issue(urlParsed[1] + "/" + urlParsed[2], urlParsed[4]);
       ghissue.info(function(err, data, headers) {
         activityCard.activityName = data.title;
@@ -72,7 +72,8 @@ module.exports = function(app, ActivityCard)
     } else {
       var ghrepo = client.repo(urlParsed[1] + "/" + urlParsed[2]);
       ghrepo.commit(urlParsed[4], function(err, data, headers) {
-        activityCard.activityName = data.title;
+        console.log(data);
+        //activityCard.activityName = data;
         activityCard.save(function(err) {
           if (err) {
             console.error(err);
