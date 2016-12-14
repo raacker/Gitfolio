@@ -44,6 +44,36 @@ module.exports = function(app, SkillSet)
     });
   });
 
+    app.post('/api/skillSets/add', function(req, res) {
+      SkillSet.findOne({userID: req.body.userID, skillName: req.body.skillName}, function(err, repository) {
+        if(err) {
+            return res.status(500).json({ error: 'Database Failure'});
+          }
+          if(repository) {
+            return res.status(404).json({ error: 'Skill is already exist'});
+          } else {
+            var skillSet = new SkillSet();
+            skillSet.userID = req.body.userID;
+            skillSet.skillName = req.body.skillName;
+            skillSet.skillType = req.body.skillType;
+            skillSet.iconURL = req.body.iconURL;
+            skillSet.level = req.body.level;
+
+            skillSet.save(function(err) {
+              if (err) {
+                console.error(err);
+                res.json({result: 0});
+                return;
+              }
+              console.log("Skill Added successfully : " + skillSet.userID + " " +
+                           skillSet.skillName);
+              res.redirect("/main");
+            });
+          }
+        })
+    });
+
+
   app.put('/api/skillSets/:skillSet_id', function(req, res) {
     SkillSet.findById(req.params.skillSet_id, function(err, skillSet) {
       if(err) {

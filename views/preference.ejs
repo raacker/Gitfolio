@@ -37,7 +37,7 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
           </button>
-          <a class="navbar-brand page-scroll" href="#page-top">Gitfolio</a>
+          <a class="navbar-brand page-scroll" href="/">Gitfolio</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,7 +59,7 @@
               <a class="page-scroll" href="/preference">Setting</a>
             </li>
             <li>
-              <a class="page-scroll" href="">Logout</a>
+              <a class="page-scroll" href="/logout">Logout</a>
             </li>
           </ul>
         </div>
@@ -96,75 +96,27 @@
                 <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
               </div>
             </form>
-            <form class="" action="api/skillSets" method="post">
+            <form class="" action="api/skillSets/add" method="post">
               <label for="skillset">Skillset :</label>
               <hr class="light">
               <div id="skillset">
                 <div class="checkbox">
-                  <label><input type="checkbox" value="java">Java</label>
+                  <label>Skill Name</label>
+                  <input name="skillName" id="url" type="string" class="form-control" size="60" placeholder="input skill name" required>
                   <label for="sel1">level :</label>
-                  <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select name="skillLevel" class="form-control" id="sel1">
+                    <option value="1" default>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                   </select>
-                </div>
-                <div class="checkbox">
-                  <label><input type="checkbox" value="python">Python</label>
-                  <label for="sel1">level :</label>
-                  <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select name="skillType" class="form-control" id="skill_type">
+                    <option value="lan" default>Language</option>
+                    <option value="frame">Framework</option>
+                    <option value="else">Else</option>
                   </select>
-                </div>
-                <div class="checkbox">
-                  <label><input type="checkbox" value="html">HTML</label>
-                  <label for="sel1">level :</label>
-                  <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="checkbox">
-                  <label><input type="checkbox" value="javascript">Javascript</label>
-                  <label for="sel1">level :</label>
-                  <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="checkbox">
-                  <label><input type="checkbox" value="c">C</label>
-                  <label for="sel1">level :</label>
-                  <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="checkbox">
-                  <label><input type="checkbox" value="c++">C++</label>
-                  <label for="sel1">level :</label>
-                  <select class="form-control" id="sel1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
+                  <input hidden="true" name="userID" value=<%= userID %>>
                 </div>
               </div>
               <div class="forbioapply">
@@ -176,7 +128,7 @@
                 <h2 class="section-heading">Organiztion</h2>
                 <hr class="light">
                 <label for="url">Organization</label>
-                <input name="name" id="url"s type="string" class="form-control" size="60" placeholder="input organization name" required>
+                <input name="name" id="url" type="string" class="form-control" size="60" placeholder="input organization name" required>
                 <div class="forbioapply">
                   <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
                 </div>

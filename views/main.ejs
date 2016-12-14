@@ -59,7 +59,7 @@
           <a class="page-scroll" href="#portfolio">Activity</a>
         </li>
         <li>
-          <a class="page-scroll" href="/">Search</a>
+          <a class="page-scroll" href="/search">Search</a>
         </li>
         <li>
           <a class="page-scroll" href="/preference">Setting</a>
@@ -148,11 +148,14 @@
       <% for(var i = 0; i < skillSets.length; i++){ %>
         <div class="col-lg-3 col-md-6 text-center">
           <div class="service-box">
-            <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
             <h3><%= skillSets[i].skillName %></h3>
-            <p class="text-muted">Our templates are updated regularly so they don't break.</p>
-            <div class="skill-name">
-            </div>
+            <%= if(skillSets[i].skillType == 'lan') {%>
+            <i class="fa fa-4x fa-pencil text-primary sr-icons"></i>
+            <%= } else if(skillSets[i].skillType == 'frame') {%>
+            <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+            <%= } else { %>
+            <i class="fa fa-4x fa-quote-left text-primary sr-icons"></i>
+            <%= } %>
             <div class="skill-level">
               <%= skillSets[i].level %>
             </div>
