@@ -86,19 +86,22 @@
   <div class="carousel-inner">
     <% if(repositories.length > 0){ %>
       <div class="item active">
-        <div class="fill" style="background-image:url('/img/repositoryback1.png');"></div>
-        <div class="carousel-caption">
-          <div class="repoName">
-            <%= repositories[0].repoName %>
+        <a href=<%= repositories[0].repoURL %>>
+          <div class="fill" style="background-image:url('/img/repositoryback1.png');"></div>
+          <div class="carousel-caption">
+            <div class="repoName">
+              <%= repositories[0].repoName %>
+            </div>
+            <div class="description">
+              <%= repositories[0].description %>
+            </div>
           </div>
-          <div class="description">
-            <%= repositories[0].description %>
-          </div>
-        </div>
+        </a>
       </div>
       <% } %>
       <% for(var i = 1; i < repositories.length; i++){ %>
         <div class="item">
+          <a href=<%= repositories[i].repoURL %>>
           <div class="fill" style="background-image:url('/img/repositoryback2.png');"></div>
           <div class="carousel-caption">
             <div class="repoName">
@@ -108,6 +111,7 @@
               <%= repositories[i].description %>
             </div>
           </div>
+        </a>
         </div>
       <% } %>
   </div>
@@ -174,10 +178,10 @@
     </div>
   </div>
   <div class="container-fluid">
-    <div class="row no-gutter popup-gallery">
+    <div class="row no-gutter">
       <% for(var i = 0; i < activityCards.length; i++){ %>
         <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href=<%= activityCards.activityURL %>>
+          <a class="portfolio-box" href=<%= activityCards[i].activityURL %>>
             <% if(activityCards[i].cardType == 'issues') {%>
             <img src="/img/issue.png" class="img-responsive" alt="">
             <% } else if(activityCards[i].cardType == 'pull') {%>
