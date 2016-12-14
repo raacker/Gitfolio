@@ -130,15 +130,13 @@ p {
 header {
     position: relative;
     width: 100%;
-    min-height: auto;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    background-position: center;
     background-image: url('/img/repositoryback1.png');
     text-align: center;
-    color: black;
+    color: transparent;
 }
 header .header-content {
     position: relative;
@@ -152,14 +150,13 @@ header .header-content .header-content-inner h1 {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 30px;
-    text-align: center;
 }
 header .header-content .header-content-inner hr {
     margin: 30px auto;
 }
 header .header-content .header-content-inner p {
     font-weight: 300;
-    color: black;
+    color: #88B04B;
     font-size: 16px;
     margin-bottom: 50px;
 }
@@ -176,7 +173,7 @@ header .header-content .header-content-inner p {
         padding: 0 50px;
     }
     header .header-content .header-content-inner {
-        max-width: 100px;
+        max-width: 1000px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -188,6 +185,9 @@ header .header-content .header-content-inner p {
         max-width: 80%;
         margin-left: auto;
         margin-right: auto;
+        color: black;
+        font-weight: bold;
+        font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     }
 }
 .section-heading {
@@ -288,4 +288,8 @@ label {
 }
 .form-control {
     display: inline-block;
+}
+#logo {
+    width: 70%;
+    margin-bottom: 30px;
 }
