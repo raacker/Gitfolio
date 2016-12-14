@@ -65,7 +65,7 @@
           <a class="page-scroll" href="/preference">Setting</a>
         </li>
         <li>
-          <a class="page-scroll" href="">Logout</a>
+          <a class="page-scroll" href="/logout">Logout</a>
         </li>
       </ul>
     </div>
@@ -88,7 +88,8 @@
       <div class="item active">
         <div class="fill" style="background-image:url('/img/repositoryback1.png');"></div>
         <div class="carousel-caption">
-          <div class="skill-name">
+          <div class="repoName">
+            <%= repositories[0].repoName %>
           </div>
           <div class="description">
             <%= repositories[0].description %>
@@ -100,7 +101,8 @@
         <div class="item">
           <div class="fill" style="background-image:url('/img/repositoryback2.png');"></div>
           <div class="carousel-caption">
-            <div class="skill-name">
+            <div class="repoName">
+              <%= repositories[i].repoName %>
             </div>
             <div class="description">
               <%= repositories[i].description %>
@@ -108,18 +110,6 @@
           </div>
         </div>
       <% } %>
-    <div class="item">
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-      <div class="carousel-caption">
-        <h2>Caption 2</h2>
-      </div>
-    </div>
-    <div class="item">
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-      <div class="carousel-caption">
-        <h2>Caption 3</h2>
-      </div>
-    </div>
   </div>
 
   <!-- Controls -->

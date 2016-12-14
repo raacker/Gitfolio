@@ -1,4 +1,7 @@
 // routes/repository.js
+var github    = require('octonode');
+var client    = github.client();
+var url       = require('url');
 
 module.exports = function(app, Repository)
 {
@@ -28,25 +31,40 @@ module.exports = function(app, Repository)
     });
   });
 
-  app.post('/api/repositories', function(req, res) {
-    var repository = new Repository();
-    repository.userID = req.body.userID;
-    repository.repoURL = req.body.repoURL;
-    repository.description = req.body.description;
+  app.post('/api/repositories/add', function(req, res) {
+      // if(repositories.length == 4) {
+      //   return res.status(404).json({error: 'Maximum Repositories are 4'});
+      // }
+    Repository.findOne({userID: req.body.userID, repoURL: req.body.repoURL}, function(err, repository) {
+      if(err) {
+          return res.status(500).json({ error: 'Database Failure'});
+        }
+        if(repository) {
+          return res.status(404).json({ error: 'Repository is already exist'});
+        } else {
+          var repository = new Repository();
+          repository.userID = req.body.userID;
+          repository.repoURL = req.body.repoURL;
+          repository.description = req.body.description;
 
-    var uri = url.parse(req.body.repoURL).pathname;
-    var urlParsed = uri.split('/');
-    repository.repositoryName = urlParsed[2];
+          var uri = url.parse(req.body.repoURL).pathname;
+          var urlParsed = uri.split('/');
+          repository.repoName = urlParsed[1] + "/" + urlParsed[2];
 
-    repository.save(function(err) {
-      if (err) {
-        console.error(err);
-        res.json({result: 0});
-      }
-      
-      res.redirect("/main?login=" + req.body.login + "&userID=" + req.body.userID);
-    });
+          repository.save(function(err) {
+            if (err) {
+              console.error(err);
+              res.json({result: 0});
+              return;
+            }
+            console.log("Repository Added successfully : " + repository.userID + " " +
+                         repository.repoName);
+            res.redirect("/main");
+          });
+        }
+      })
   });
+
 
   app.put('/api/repositories/:repository_id', function(req, res) {
     Repository.findById(req.params.repository_id, function(err, repository) {

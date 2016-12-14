@@ -25,10 +25,62 @@ router.get("/", function(req, res) {
 });
 
 router.get("/preference", function(req, res) {
-  console.log("enter to preference : " + req.session.userID);
-  res.render("preference", {
-    userID: req.session.userID
-  });
+  res.status(200);
+  if(req.session.login == 'login') {
+    console.log("enter to preference : " + req.session.userID);
+    var repository = require('../models/Repository');
+    var organization = require('../models/Organization');
+    var skillSet = require('../models/SkillSet');
+    repository.count({}, function(err, repositoryCount) {
+      repository.find({userID: req.session.userID}, function(err, repositoryResult) {
+        organization.count({}, function(err, organizationCount) {
+          organization.find({userID: req.session.userID}, function(err, organizationResult) {
+            skillSet.count({}, function(err, skillSetCount){
+              skillSet.find({userID: req.body.userID}, function(err, skillSetResult) {
+                res.render("preference", {
+                  userID: req.session.userID,
+                  repositories: repositoryResult,
+                  organizations: organizationResult,
+                  skillSets: skillSetResult
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  } else {
+      return res.status(404).json({error: "Unexpected access"});
+  }
+});
+
+router.post("/preference", function(req, res) {
+  if(req.session.login == 'login') {
+    console.log("enter to preference : " + req.session.userID);
+    var repository = require('../models/Repository');
+    var organization = require('../models/Organization');
+    var skillSet = require('../models/SkillSet');
+    repository.count({}, function(err, repositoryCount) {
+      repository.find({userID: req.session.userID}, function(err, repositoryResult) {
+        organization.count({}, function(err, organizationCount) {
+          organization.find({userID: req.session.userID}, function(err, organizationResult) {
+            skillSet.count({}, function(err, skillSetCount){
+              skillSet.find({userID: req.body.userID}, function(err, skillSetResult) {
+                res.render("preference", {
+                  userID: req.session.userID,
+                  repositories: repositoryResult,
+                  organizations: organizationResult,
+                  skillSets: skillSetResult
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  } else {
+      return res.status(404).json({error: "Unexpected access"});
+  }
 });
 
 router.get("/main", function(req, res) {
@@ -40,13 +92,13 @@ router.get("/main", function(req, res) {
     var activityCard = require('../models/ActivityCard');
     var userProfile = require('../models/UserProfile');
     repository.count({}, function(err, repositoryCount) {
-      repository.find({userID: req.body.userID}, function(err, repositoryResult) {
+      repository.find({userID: req.session.userID}, function(err, repositoryResult) {
         organization.count({}, function(err, organizationCount) {
-          organization.find({userID: req.body.userID}, function(err, organizationResult) {
+          organization.find({userID: req.session.userID}, function(err, organizationResult) {
             skillSet.count({}, function(err, skillSetCount){
-              skillSet.find({userID: req.body.userID}, function(err, skillSetResult) {
+              skillSet.find({userID: req.session.userID}, function(err, skillSetResult) {
                 activityCard.count({}, function(err, activityCardCount) {
-                  activityCard.find({userID: req.body.userID}, function(err, activityCardResult) {
+                  activityCard.find({userID: req.session.userID}, function(err, activityCardResult) {
                     userProfile.findOne({userID: req.session.userID}, function(err, user) {
                       res.render("main" , {
                         repositories: repositoryResult,
@@ -100,13 +152,13 @@ router.post("/main", function(req, res) {
     req.session.userID = userID;
   });
   repository.count({}, function(err, repositoryCount) {
-    repository.find({userID: req.body.userID}, function(err, repositoryResult) {
+    repository.find({userID: req.session.userID}, function(err, repositoryResult) {
       organization.count({}, function(err, organizationCount) {
-        organization.find({userID: req.body.userID}, function(err, organizationResult) {
+        organization.find({userID: req.session.userID}, function(err, organizationResult) {
           skillSet.count({}, function(err, skillSetCount){
-            skillSet.find({userID: req.body.userID}, function(err, skillSetResult) {
+            skillSet.find({userID: req.session.userID}, function(err, skillSetResult) {
               activityCard.count({}, function(err, activityCardCount) {
-                activityCard.find({userID: req.body.userID}, function(err, activityCardResult) {
+                activityCard.find({userID: req.session.userID}, function(err, activityCardResult) {
                   userProfile.findOne({userID: req.session.userID}, function(err, user) {
                     res.render("main" , {
                       repositories: repositoryResult,
@@ -135,9 +187,10 @@ router.get("/login", function(req, res) {
   });
 });
 
-router.post("/logout", function(req, res) {
+router.get("/logout", function(req, res) {
   req.session.login = 'logout';
   req.session.userID = null;
+  console.log("Signed out successfully");
   res.redirect("/");
 });
 //
