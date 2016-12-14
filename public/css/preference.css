@@ -29,7 +29,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+label,
+input {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 p {
@@ -259,4 +261,31 @@ fieldset[disabled] .btn-default.active {
 }
 #forbutton {
     margin: 30px;
+}
+.forbioapply {
+    margin: 30px;
+}
+.forbioapply .btn-default {
+    color: #88B04B;
+    background-color: white;
+    border-color: #88B04B;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.forbioapply .btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    color: white;
+    background-color: #88B04B;
+    border-color: #88B04B;
+}
+label {
+    font-size: medium;
+}
+.form-control {
+    display: inline-block;
 }

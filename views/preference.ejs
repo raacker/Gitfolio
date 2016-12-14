@@ -92,7 +92,9 @@
                 <input name="userLinkedInLink" id="url" type="string" class="form-control" size="60" placeholder="input LinkedIn link" required>
               </div>
               <input hidden="true" name="userID" value=<%= userID %>>
-              <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+              <div class="forbioapply">
+                <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+              </div>
             </form>
             <form class="" action="api/skillSets" method="post">
               <label for="skillset">Skillset :</label>
@@ -165,7 +167,9 @@
                   </select>
                 </div>
               </div>
-              <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+              <div class="forbioapply">
+                <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+              </div>
             </form>
             <form class="" action="api/organizations" method="post">
               <div id="organization">
@@ -173,7 +177,9 @@
                 <hr class="light">
                 <label for="url">Organization</label>
                 <input name="name" id="url"s type="string" class="form-control" size="60" placeholder="input organization name" required>
-                <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+                <div class="forbioapply">
+                  <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+                </div>
               </div>
             </form>
           </div>
