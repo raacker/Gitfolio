@@ -54,7 +54,7 @@ module.exports = function(app, ActivityCard)
             console.error(err);
             res.json({result: 0});
           }
-          res.redirect("/main?login=" + req.body.login + "&userID=" + req.body.userID);
+          res.redirect("/main");
         });
       })
     }
