@@ -29,7 +29,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+label,
+input {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 p {
@@ -125,8 +127,76 @@ p {
         color: #88B04B;
     }
 }
-.section-heading {
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('/img/repositoryback1.png');
+    text-align: center;
+    color: black;
+}
+header .header-content {
+    position: relative;
+    text-align: center;
+    padding: 100px 15px 100px;
+    width: 100%;
+}
+header .header-content .header-content-inner h1 {
+    font-weight: 700;
+    text-transform: uppercase;
     margin-top: 0;
+    margin-bottom: 0;
+    font-size: 30px;
+    text-align: center;
+}
+header .header-content .header-content-inner hr {
+    margin: 30px auto;
+}
+header .header-content .header-content-inner p {
+    font-weight: 300;
+    color: black;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+    header {
+        min-height: 100%;
+    }
+    header .header-content {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        padding: 0 50px;
+    }
+    header .header-content .header-content-inner {
+        max-width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    header .header-content .header-content-inner h1 {
+        font-size: 50px;
+    }
+    header .header-content .header-content-inner p {
+        font-size: 18px;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.section-heading {
+    margin-top: 30px;
+}
+@media (min-width: 768px) {
+    section {
+        min-height: 100%;
+    }
 }
 #sel1 {
     width: 20%;
@@ -188,4 +258,34 @@ fieldset[disabled] .btn-default.active {
 .btn-default .badge {
     color: #88B04B;
     background-color: #88B04B;
+}
+#forbutton {
+    margin: 30px;
+}
+.forbioapply {
+    margin: 30px;
+}
+.forbioapply .btn-default {
+    color: #88B04B;
+    background-color: white;
+    border-color: #88B04B;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.forbioapply .btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    color: white;
+    background-color: #88B04B;
+    border-color: #88B04B;
+}
+label {
+    font-size: medium;
+}
+.form-control {
+    display: inline-block;
 }

@@ -21,7 +21,7 @@ header {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    background-image: url('/img/searchback.png');
+    background-image: url('/img/repositoryback1.png');
     text-align: center;
     color: transparent;
 }
@@ -72,6 +72,9 @@ header .header-content .header-content-inner p {
         max-width: 80%;
         margin-left: auto;
         margin-right: auto;
+        color: black;
+        font-weight: bold;
+        font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     }
 }
 .btn {
@@ -148,7 +151,9 @@ fieldset[disabled] .btn-default.active {
     margin-right: 30px;
 }
 #logo {
-    height: 15%;
-    width: 65%;
+    width: 70%;
     margin-bottom: 30px;
+}
+input {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
