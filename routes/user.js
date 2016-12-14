@@ -16,7 +16,7 @@ module.exports = function(app, UserProfile)
   });
 
   // CREATE UserProfile
-  app.post('/api/userProfiles', function(req, res){
+  app.post('/api/userProfiles/add', function(req, res){
     if(req.body.userID == null) {
       return res.status(500).json("wrong access point");
     }
@@ -46,6 +46,7 @@ module.exports = function(app, UserProfile)
             skillSets: [],
             activityCards: [],
             userID: req.body.userID,
+            userBio: " ",
             userLinkedInLink: [],
             login: true
           });

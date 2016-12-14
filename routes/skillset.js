@@ -57,7 +57,7 @@ module.exports = function(app, SkillSet)
             skillSet.skillName = req.body.skillName;
             skillSet.skillType = req.body.skillType;
             skillSet.iconURL = req.body.iconURL;
-            skillSet.level = req.body.level;
+            skillSet.skillLevel = req.body.level;
 
             skillSet.save(function(err) {
               if (err) {

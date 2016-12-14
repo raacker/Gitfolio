@@ -6,7 +6,7 @@ var skillSetSchema = new Schema({
   skillName: String,
   skillType: String,
   iconURL: String,
-  level: Number
+  skillLevel: Number
 });
 
 module.exports = mongoose.model('skillSet', skillSetSchema);
