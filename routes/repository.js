@@ -43,7 +43,8 @@ module.exports = function(app, Repository)
         console.error(err);
         res.json({result: 0});
       }
-      res.redirect('/main');
+      
+      res.redirect("/main?login=" + req.body.login + "&userID=" + req.body.userID);
     });
   });
 

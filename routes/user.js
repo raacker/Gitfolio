@@ -2,27 +2,26 @@
 
 module.exports = function(app, UserProfile)
 {
-  // GET ALL Users
+  // GET ALL Users or single user
   app.get('/api/userProfiles', function(req,res){
-    UserProfile.find( function(err, users) {
-      if(err) {
-        return res.status(500).send({error: 'Database Failure'});
-      }
-      res.redirect("/main");
-    });
-  });
-
-  // GET SINGLE User
-  app.get('/api/userProfiles/:userID', function(req, res){
-    UserProfile.findOne({userID: req.params.userID}, function(err, user) {
-      if(err) {
-        return res.status(500).json({error: err});
-      }
-      if(!user) {
-        return res.status(404).json({error: 'User Profile not found'});
-      }
-      res.render("main");
-    })
+    var query = req.query.userID;
+    if(query){
+      UserProfile.findOne({userID: query}, function(err, user) {
+        if(err) {
+          return res.status(500).json({error: err});
+        }
+        if(!user) {
+          return res.status(404).json({error: 'User Profile not found'});
+        }
+      });
+    } else {
+      UserProfile.find( function(err, users) {
+        if(err) {
+          return res.status(500).send({error: 'Database Failure'});
+        }
+        res.json(users);
+      });
+    }
   });
 
   // CREATE UserProfile
@@ -37,9 +36,8 @@ module.exports = function(app, UserProfile)
         res.json({result: 0});
         return;
       }
-      res.render("/main",{
-        userID: req.body.userID
-      });
+      console.log(userProfile.userID);
+      res.redirect("/main");
     });
   });
 

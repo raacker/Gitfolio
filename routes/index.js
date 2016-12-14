@@ -30,28 +30,42 @@ router.get("/preference", function(req, res) {
 
 router.get("/main", function(req, res) {
     res.status(200);
+    if(req.query.userID == null) {
+      return res.status(404).json({error: "Unexpected access"});
+    }
+
     var repository = require('../models/Repository');
     var organization = require('../models/Organization');
     var skillSet = require('../models/SkillSet');
     var activityCard = require('../models/ActivityCard');
-    var repositoryRouter = require('repository')(req, Repository);
+    var userProfile = require('../models/UserProfile');
 
-    
+
+    userProfile.findOne({userID: req.query.userID}, function(err, user) {
+      if(err) {
+        return res.status(500).json({error: err});
+      }
+      if(!user) {
+        return res.status(404).json({error: 'User Profile not found'});
+      }
+      console.log(user);
+    });
     repository.count({}, function(err, repositoryCount) {
-      repository.find({}, function(err, repositoryResult) {
+      repository.find({userID: req.query.userID}, function(err, repositoryResult) {
         organization.count({}, function(err, organizationCount) {
-          organization.find({}, function(err, organizationResult) {
+          organization.find({userID: req.query.userID}, function(err, organizationResult) {
             skillSet.count({}, function(err, skillSetCount){
-              skillSet.find({}, function(err, skillSetResult) {
+              skillSet.find({userID: req.query.userID}, function(err, skillSetResult) {
                 activityCard.count({}, function(err, activityCardCount) {
-                  activityCard.find({}, function(err, activityCardResult) {
+                  activityCard.find({userID: req.query.userID}, function(err, activityCardResult) {
                     res.render("main" , {
                       repositories: repositoryResult,
                       organizations: organizationResult,
                       skillSets: skillSetResult,
                       activityCards: activityCardResult,
-                      userID: req.userID,
-                      userLinkedInLink: req.userLinkedInLink
+                      userID: req.query.userID,
+                      userLinkedInLink: req.userLinkedInLink,
+                      login: req.query.login
                     });
                   });
                 })
@@ -60,6 +74,41 @@ router.get("/main", function(req, res) {
           });
         });
       });
+    });
+});
+
+router.post("/main", function(req, res) {
+    res.status(200);
+    var UserProfile = require('../models/UserProfile');
+    UserProfile.findOne({userID: req.body.userID}, function(err, user) {
+      if(err) {
+        return res.status(500).json({error: err});
+      }
+      if(!user) {
+        var UserProfile = require('../models/UserProfile');
+        var userProfile = new UserProfile();
+        userProfile.userID = req.body.userID;
+        userProfile.linkedInLink = req.body.userLinkedInLink;
+
+        userProfile.save(function(err) {
+          if (err) {
+            console.error(err);
+            res.json({result: 0});
+            return;
+          }
+          res.render("main", {
+            repositories: [],
+            organizations: [],
+            skillSets: [],
+            activityCards: [],
+            userID: req.body.userID,
+            userLinkedInLink: null,
+            login: true
+          });
+        });
+      } else {
+        return res.status(404).json({error: 'Username already registered'});
+      }
     });
 });
 
