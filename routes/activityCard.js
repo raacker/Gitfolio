@@ -44,6 +44,7 @@ module.exports = function(app, ActivityCard)
     activityCard.repositoryName = urlParsed[2];
     activityCard.cardType = urlParsed[3];
 
+    console.log(req.body.login);
     if(activityCard.cardType == "pull") {
       var ghpr = client.pr(urlParsed[1] + "/" + urlParsed[2], urlParsed[4]);
       ghpr.info(function(err, data, headers) {
@@ -53,9 +54,9 @@ module.exports = function(app, ActivityCard)
             console.error(err);
             res.json({result: 0});
           }
-          res.redirect('/main');
+          res.redirect("/main?login=" + req.body.login + "&userID=" + req.body.userID);
         });
-      });
+      })
     }
   });
 
