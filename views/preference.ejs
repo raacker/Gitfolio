@@ -76,101 +76,111 @@
         </div>
       </div>
     </header>
-    <section class="bg-primary" id="biography">
+    <section class="bg-primary" id="biography" action="api/skillSets" method="post">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 text-center">
             <h2 class="section-heading">Biography</h2>
             <hr class="light">
-            <label for="bio">Biography :</label>
-            <textarea class="form-control" rows="5" id="bio"></textarea>
-            <label for="skillset">Skillset :</label>
-            <hr class="light">
-            <div id="skillset">
-              <div class="checkbox">
-                <label><input type="checkbox" value="java">Java</label>
-                <label for="sel1">level :</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+            <form class="biography-edit" action="api/userProfiles/edit" method="post">
+              <label for="bio">Biography :</label>
+              <textarea name="userBio" class="form-control" rows="5" id="bio"></textarea>
+              <div id="linkedin">
+                <h2 class="section-heading">Linked</h2>
+                <hr class="light">
+                <label for="url">LinkedIn</label>
+                <input name="userLinkedInLink" id="url" type="string" class="form-control" size="60" placeholder="input LinkedIn link" required>
               </div>
-              <div class="checkbox">
-                <label><input type="checkbox" value="python">Python</label>
-                <label for="sel1">level :</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" value="html">HTML</label>
-                <label for="sel1">level :</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" value="javascript">Javascript</label>
-                <label for="sel1">level :</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" value="c">C</label>
-                <label for="sel1">level :</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" value="c++">C++</label>
-                <label for="sel1">level :</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-            </div>
-            <div id="organization">
-              <h2 class="section-heading">Organiztion</h2>
+              <input hidden="true" name="userID" value=<%= userID %>>
+              <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+            </form>
+            <form class="" action="api/skillSets" method="post">
+              <label for="skillset">Skillset :</label>
               <hr class="light">
-              <label for="url">Organization</label>
-              <input id="url" type="string" class="form-control" size="60" placeholder="input organization name" required>
-            </div>
-            <div id="linkedin">
-              <h2 class="section-heading">Linked</h2>
-              <hr class="light">
-              <label for="url">LinkedIn</label>
-              <input id="url" type="string" class="form-control" size="60" placeholder="input LinkedIn link" required>
-            </div>
+              <div id="skillset">
+                <div class="checkbox">
+                  <label><input type="checkbox" value="java">Java</label>
+                  <label for="sel1">level :</label>
+                  <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="python">Python</label>
+                  <label for="sel1">level :</label>
+                  <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="html">HTML</label>
+                  <label for="sel1">level :</label>
+                  <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="javascript">Javascript</label>
+                  <label for="sel1">level :</label>
+                  <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="c">C</label>
+                  <label for="sel1">level :</label>
+                  <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="c++">C++</label>
+                  <label for="sel1">level :</label>
+                  <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+            </form>
+            <form class="" action="api/organizations" method="post">
+              <div id="organization">
+                <h2 class="section-heading">Organiztion</h2>
+                <hr class="light">
+                <label for="url">Organization</label>
+                <input name="name" id="url"s type="string" class="form-control" size="60" placeholder="input organization name" required>
+                <button type="submit" class="btn btn-default btn-xl sr-button" value="SUBMIT">Apply</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </section>
-    <section id="repository">
+    <section id="repository" action="api/repositories" method="post">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 text-center">
