@@ -149,13 +149,13 @@
         <div class="col-lg-3 col-md-6 text-center">
           <div class="service-box">
             <h3><%= skillSets[i].skillName %></h3>
-            <%= if(skillSets[i].skillType == 'lan') {%>
+            <% if(skillSets[i].skillType == 'lan') {%>
             <i class="fa fa-4x fa-pencil text-primary sr-icons"></i>
-            <%= } else if(skillSets[i].skillType == 'frame') {%>
+            <% } else if(skillSets[i].skillType == 'frame') {%>
             <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
-            <%= } else { %>
+            <% } else { %>
             <i class="fa fa-4x fa-quote-left text-primary sr-icons"></i>
-            <%= } %>
+            <% } %>
             <div class="skill-level">
               <%= skillSets[i].level %>
             </div>
@@ -179,7 +179,7 @@
     <div class="row no-gutter popup-gallery">
       <% for(var i = 0; i < activityCards.length; i++){ %>
         <div class="col-lg-4 col-sm-6">
-          <a href="/img/portfolio/fullsize/1.jpg" class="portfolio-box">
+          <a class="portfolio-box" href=<%= activityCards.activityURL %>>
             <img src="/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
             <div class="portfolio-box-caption">
               <div class="portfolio-box-caption-content">
@@ -202,9 +202,8 @@
   		<% } %>
     </div>
     </div>
-    <% if(login == 'true') {%>
       <a data-toggle="modal" href="#cardAdd" class="btn btn-primary btn-small" style="height:32px">add</a>
-    <% } %>
+
   </div>
 </section>
 

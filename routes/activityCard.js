@@ -57,6 +57,30 @@ module.exports = function(app, ActivityCard)
           res.redirect("/main");
         });
       })
+    } else if(activityCard.cardType == "issue") {
+      var ghissue = client.issue(urlParsed[1] + "/" + urlParsed[2], urlParsed[4]);
+      ghissue.info(function(err, data, headers) {
+        activityCard.activityName = data.title;
+        activityCard.save(function(err) {
+          if (err) {
+            console.error(err);
+            res.json({result: 0});
+          }
+          res.redirect("/main");
+        });
+      })
+    } else {
+      var ghrepo = client.repo(urlParsed[1] + "/" + urlParsed[2]);
+      ghrepo.commit(urlParsed[4], function(err, data, headers) {
+        activityCard.activityName = data.title;
+        activityCard.save(function(err) {
+          if (err) {
+            console.error(err);
+            res.json({result: 0});
+          }
+          res.redirect("/main");
+        });
+      });
     }
   });
 
@@ -88,6 +112,30 @@ module.exports = function(app, ActivityCard)
             //   }
             //   res.redirect('/main');
             // });
+          });
+        } else if(activityCard.cardType == "issue") {
+          var ghissue = client.issue(urlParsed[1] + "/" + urlParsed[2], urlParsed[4]);
+          ghissue.info(function(err, data, headers) {
+            activityCard.activityName = data.title;
+            activityCard.save(function(err) {
+              if (err) {
+                console.error(err);
+                res.json({result: 0});
+              }
+              res.redirect("/main");
+            });
+          })
+        } else {
+          var ghrepo = client.repo(urlParsed[1] + "/" + urlParsed[2]);
+          ghrepo.commit(urlParsed[4], function(err, data, headers) {
+            activityCard.activityName = data.title;
+            activityCard.save(function(err) {
+              if (err) {
+                console.error(err);
+                res.json({result: 0});
+              }
+              res.redirect("/main");
+            });
           });
         }
       }
