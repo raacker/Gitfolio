@@ -128,3 +128,64 @@ p {
 .section-heading {
     margin-top: 0;
 }
+#sel1 {
+    width: 20%;
+}
+.btn {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    border: medium;
+    border-radius: 300px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.btn-xl {
+    padding: 15px 30px;
+}
+.btn-default {
+    color: white;
+    background-color: #88B04B;
+    border-color: #88B04B;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    color: #88B04B;
+    background-color: white;
+    border-color: #88B04B;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    background-image: none;
+}
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+    background-color: white;
+    border-color:#88B04B;
+}
+.btn-default .badge {
+    color: #88B04B;
+    background-color: #88B04B;
+}
